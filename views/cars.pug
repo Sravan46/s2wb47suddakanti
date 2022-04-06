@@ -1,34 +1,16 @@
 extends layout
+
 block content
   h1= title
-  p Welcome to the icemagic 
-  div(class="container-fluid")
-        div(class="row")
-            -
-                let cars = [
-                    {
-                        "car_brand": "BMW",
-                        "car_model": 7,
-                        "car_color": "black"
-                    },
-                    {
-                        "car_brand": "Benz",
-                        "car_model": 40,
-                        "car_color": "black"
-                        
-                    },
-                    {
-                        "car_brand": "Audi",
-                        "car_model": 15,
-                        "car_color": "black"
-                    },                   
-                ]
-            each v,index in icemagic
-                div(class="col-sm-2" onclick=`buy(${index})`) #{v.car_brand}
-                div(class="col-sm-2" onclick=`buy(${index})`) #{v.car_model}
-                div(class="col-sm-2" onclick=`buy(${index})`) #{v.car_color}
-  script.                
-        function buy(intemNo)
-        {
-              alert(`you purchased Item ${intemNo+1}`)
-        }
+  - let car = [{car_type:"Sports", costume_name:"AUDI", model: "Q5"},{car_type:"Sports", car_name:"FERARI", model: "F4"},{car_type:"Sports", car_name:"I20", model: "asta"}]
+  div(class="container-fluid") 
+   div(class="row")
+    each cars,index in car
+        div(class="col-sm-2" onclick=`buy(${index})`) car_type: #{cars.car_type} , car_name: #{cars.car_name} , model: #{cars.model} 
+
+  script. 
+   let itemNo=0
+      function buy(itemNo)
+      {
+          alert(`You purchased Item ${itemNo+1}`)
+      }
